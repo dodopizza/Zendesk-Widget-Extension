@@ -1,0 +1,110 @@
+<html><body>
+
+<!-- Start of dodopizza Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","dodopizza.zendesk.com");
+/*]]>*/</script>
+<!-- End of dodopizza Zendesk Widget script -->
+
+
+
+<!-- Start of dodopizza Zendesk Widget Presetup Fields -->
+<script type="text/javascript">
+	zE( function () { 
+		let Department = 'Сыктывкар-10';
+		let FIO        = 'Иванов Иван Иванович' + ' (' + Department + ')';
+		let Email      = 'ivanov@sykt.ru';
+		zE.identify({name: FIO, email: Email, organization: Department, zendeskHost:'dodopizza.zendesk.com'}); 
+	});
+</script>
+<!-- End of dodopizza Zendesk Widget Presetup Fields -->
+
+
+<!-- Start of dodopizza Zendesk Widget Resizer -->
+<script type="text/javascript">
+    /**
+     *
+     *  Name: Zendesk widget resize hack. 
+     *  Description: Zendesk Widget API not allowed to resize the widget, so We need to JS it!
+     *  Info: Pure JS, yep.
+     *  Author: Vitaly Uvarov
+     *  E-mail: v.uvarov@dodopizza.com
+     *
+     *  Examples: 
+     *      ZendWidgetResizeHack.init();          // Default value is 500px
+     *      ZendWidgetResizeHack.init(600);       // Run with 600px width
+     *
+     **/
+	ZendWidgetResizeHack = {
+		 logging			 : false
+		,articleWidth        : false
+		,articleWidthDefault : false
+		,articleFrame        : null
+		,log : function(m){
+			if (!this.logging) return;
+			console.log('[ZendWidgetResizeHack]', m);
+		}
+		,init : function(newWidth){
+			this.articleWidth = newWidth*1 || 500;
+			this.log('Init with ' + this.articleWidth);
+			this.wait_for_article_content();
+		}
+		,frame_get_by_class(className){
+			return this.articleFrame.contentWindow.document.getElementsByClassName(className)[0];
+		}
+		,wait_for_article_content : function(){
+			this.log('Waiting for article content every 2s');
+			let _this = this;
+
+			let watcher = setInterval(function(){
+				_this.articleFrame = document.getElementById("helpCenterForm");
+				if (_this.articleFrame === null) return;
+				let articleContent = _this.frame_get_by_class('src-component-helpCenter-HelpCenterArticle-content');
+				if (articleContent === undefined) return;
+				clearInterval(watcher);
+				_this.add_button();
+			}, 2000);
+		}
+		,add_button : function(){
+			this.log('Adding button');
+			_this = this;
+			let resource_img_resize = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAABCgAwAEAAAAAQAAABAAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIABAAEAMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/3QAEAAH/2gAMAwEAAhEDEQA/APRALizu7G5udP0saCLBI57iKLzfL37t6q+cmLO0kkcdTxkr0WpaZYR6TdzQ2Vjv+yeWDL8iFF5VWYdFB/KjTdS0+PSbSGa9sd32XzCIvkQovDMqnogP5V4ld3l2NQuIIbq6+x/aHWONZn8vy952gLnG3GMDpigD/9k=';
+			let menuhead = this.frame_get_by_class('Button--nav');
+			if (menuhead === undefined){ this.log('Header not found, maybe, API was changed. Exit.'); return; }
+			menuhead = menuhead.parentElement;
+			//
+			let div = document.createElement("div");
+			let btn = document.createElement("img");
+			div.appendChild(btn);
+			menuhead.appendChild(div);
+			//
+			div.className = 'Button Button--nav u-posAbsolute';
+			div.style['margin-left'] = '50px';
+			div.style['margin-top']  = '-3px';
+			btn.setAttribute('src',resource_img_resize);
+			btn.addEventListener("click", function(){ _this.set_window_size(); });
+		}
+		,set_window_size : function(){
+			this.log('Changing window size');
+			let currentWidth = this.articleFrame.offsetWidth;
+			if (this.articleWidthDefault == false) this.articleWidthDefault = currentWidth;
+			let width = ( this.articleWidthDefault == currentWidth ) ? this.articleWidth : this.articleWidthDefault;
+			try {
+				// IFrame
+				this.articleFrame.style.width = width+'px';
+				// Article parent container
+				this.frame_get_by_class('Container').style.width = (width-10) + 'px';
+				// Article text
+				this.frame_get_by_class('src-component-helpCenter-HelpCenterArticle-content').style['max-width'] = 'none';
+			} 
+			catch (err) { this.log(err); }
+		}
+	};
+
+	//ZendWidgetResizeHack.logging = true;
+	ZendWidgetResizeHack.init(700);
+</script>
+<!-- End of dodopizza Zendesk Widget Resizer -->
+
+
+
+</body></html>
